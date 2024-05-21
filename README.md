@@ -21,6 +21,7 @@ In this section, we will categorize the dataset into three types: Categorical, D
 
 We frist start from categorical columns:  
 ![Categorical Feature](MoneyLion_Images/cat_payfreq_leadcost.png)  
+![Categorical Feature](MoneyLion_Images/cat_npaidoff_state.png)  
 Finding: 
 
 - Semi-monthly and monthly repayment schedules have nearly twice the likelihood of loan default compared to biweekly and weekly repayments. This is likely because weekly payments involve smaller amounts each time. As a business strategy, the company should consider promoting more frequent repayment schedules to reduce the risk of loan defaults.
@@ -29,3 +30,47 @@ Finding:
 - Many states have a loan default rate of 10% or higher. It is recommended that the company reduce loan approvals in these states, with particular attention to Virginia (VA), which has a 20% default rate.
 - Our dataset shows a significant class imbalance, which we will address in the modeling section.
 
+Next we will look at datetime columns:
+![Application_Month](MoneyLion_Images/application_month.png)  
+- loanStatus 0 = no late repayment, loanStatus 1 = late repayment  
+
+Finding:
+- November to February : higher loan demand + higher incidence of late repayments
+- April to Octover : no instances of late repayment 
+
+Based on the finding above, we may infer that people tend to borrow a loan when it comees to holiday season(Christmas, Newyear) where they are more likely to make impulse purchases which they couldnt afford, thats why we see a late of repayment in the following few months. But those who ask for loan during the middle of the year exhibit a commendable record of timely repayment. **This may be a good business insights for the company as we can reduce loan during holiday season while incrasing loan during normal season to maximize profit while minizing risk of default loan.**
+
+
+![Time from submit application to origination](MoneyLion_Images/time_diff.png)  
+Originated: when the lender officially approves application and agrees to give the money  
+
+Finding:
+- Most loan application is originated within 40 hours
+- **All** late repayment loan is originated within 17 hours
+
+**We've noticed a trend where loans with longer originated times are less likely to default**. Assuming we have an SOP before origination, we wonder why some of the loans have a longer origination time, does it include any extra information collection process? Can we apply that to applicantions with a shorter origination time? However, due to the lack of detailed information, we are unable to delve deeper into this matter at present.
+
+## Modeling
+In this section:
+- We address the issue of imbalanced datasets using the Upsampling method, specifically employing Random Sampling in this instance.
+- Subsequently, we utilize LGBM to compute the final AUC score.
+
+Please note that given the nature of this data science assessment, we aim to keep the modeling section as concise as possible. However, for further model enhancement, consider the following approaches:
+1. Experiment with different upsampling methods such as SMOTE or its extensions. If utilizing SMOTE, ensure to handle missing values accordingly.
+2. Conduct hyperparameter tuning using tools like HyperOpt or Optuna to fine-tune our model.
+3. Explore various types of K-fold validation techniques to validate the robustness of the final outcome.
+![Feature_Importance](MoneyLion_Images/feature_importance.png)
+We have achieved an AUC score of approximately 85.67%, indicating that the model effectively discriminates between True Positives (instances correctly predicted as high risk and proven to default) and False Positives (instances incorrectly predicted as high risk but not proven to default). Also based on the diagram above we can observe that our new feature contributes much to the model!
+
+
+## Future Discussion
+Throughout our analysis, we've encountered limitations in feature engineering due to the current dataset's scope. We assumed that the clear fraud score is derived solely from the other columns in the clarity_underwriting_variables dataset. To gain a more comprehensive understanding and improve our predictive capabilities, we may need to access additional information such as:
+
+- Income: This data would allow us to assess whether a loan is financially feasible for an individual.
+- Family members: Understanding the borrower's family size can provide insights into their family expenses, such as:
+  - Income divided by the number of children
+  - Income divided by the total number of family members
+  - Proportion of children among family members (number of children divided by family members)
+- Employment history: Examining the borrower's work history can help gauge the stability of their income source. For example:
+  - Longer tenure at the same company may indicate a stable income and lower risk of default.
+- Application history across different financial institutions: Knowing how many loans borrowers have applied for at various institutions can offer valuable context and potential risk indicators.

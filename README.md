@@ -9,10 +9,10 @@ As per our objective, our model aim to serve as a complementary to the current s
 Refering to the data dictionary, the "Return Item" under loanStatus column seems to be a good fit for our target variable as it indicate a missed payment due to insufficient funds. But we are also curious with other loanStatus like "External/Internal collection". Does it really indicates timely repayment? Due to the absence of additional information, we've decided to stick with "Return Item" as our primary target variable for now. Further insights could be gained with more detailed data on these other categories.
 
 ## Data Understanding
-We received a zipfile which contains 3 dataframe (loan, payment, clarity underwriting variavles). Below is a summarization for these 3 dataframe
-loan : Our key dataframe 
-payment : Consist payment info that comes after loan approval. Since our model's goal is to act as a secondary safety measure prior to loan approval, this dataset will be excluded to avoid information leakage.
-clarity underwriting variavle : This dataset encompasses variables retrieved from clarity, aiding in the underwriting process of loans. In simpler terms, it involves assessing the risk associated with a loan by evaluating various factors (columns) to determine the probability of the borrower repaying the loan. Upon reviewing the dataset, it appears that the "clearFraudScore" serves as a summarizing score derived from all other columns in the dataset. We assume that all other columns are well represented by this particular column. Consequently, we may consider dropping all other columns to streamline our dataset and reduce dimensionality.
+We received a zipfile which contains 3 dataframe (loan, payment, clarity underwriting variavles). Below is a summarization for these 3 dataframe  
+loan : Our key dataframe   
+payment : Consist payment info that comes after loan approval. Since our model's goal is to act as a secondary safety measure prior to loan approval, this dataset will be excluded to avoid information leakage.  
+clarity underwriting variavle : This dataset encompasses variables retrieved from clarity, aiding in the underwriting process of loans. In simpler terms, it involves assessing the risk associated with a loan by evaluating various factors (columns) to determine the probability of the borrower repaying the loan. Upon reviewing the dataset, it appears that the "clearFraudScore" serves as a summarizing score derived from all other columns in the dataset. We assume that all other columns are well represented by this particular column. Consequently, we may consider dropping all other columns to streamline our dataset and reduce dimensionality.  
 
 ## EDA
 In this section, we will categorize the dataset into three types: Categorical, Datetime, and Numerical data. We will process each data type separately, create new features where applicable, and provide business insights to the company.

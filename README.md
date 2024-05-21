@@ -19,7 +19,7 @@ We received a zip file which contains 3 dataframes (loan, payment, clarity under
 ## EDA
 In this section, we will categorize the data into three types: Categorical, Datetime, and Numerical data. We will process each data type separately, create new features where applicable, and provide business insights to the company.
 
-We first start with categorical columns:  
+# We first start with categorical columns:  
 ![Categorical Feature](MoneyLion_Images/cat_payfreq_leadcost.png)  
 ![Categorical Feature](MoneyLion_Images/cat_npaidoff_state.png)  
 Finding: 
@@ -31,7 +31,7 @@ Finding:
 - Our dataset shows a significant class imbalance, which we will address in the modelling section.
 
 
-Next, we will look at datetime columns:
+# Next, we will look at datetime columns:
 
 ![Application_Month](MoneyLion_Images/application_month.png)  
 
@@ -44,6 +44,7 @@ Finding:
 Based on the finding above, we may infer that people tend to borrow a loan when it comes to the holiday season(Christmas, Newyear) where they are more likely to make impulse purchases which they couldnt afford, thats why we see a late of repayment in the following few months. But those who ask for loan during the middle of the year exhibit a commendable record of timely repayment. **This may be a good business insight for the company as we can reduce loans during the holiday season while increasing loans during the normal season to maximize profit while minimising the risk of default loans.**
 
 
+ 
 ![Time from submit application to origination](MoneyLion_Images/time_diff.png)  
 Originated: when the lender officially approves the application and agrees to give the money  
 

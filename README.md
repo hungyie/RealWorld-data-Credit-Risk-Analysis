@@ -2,19 +2,21 @@
 
 This is a dataset for a take-home assessment of a finance company named Moneylion. The main goal of the notebook is to enhance the company's ability to identify loans at risk of default by creating a model that complements existing screening systems and reduces potential losses.
 
-## Important Preparation
-
-As per our objective, our model aims to serve as a complementary to the current screening system. We will narrow down our focus to loans that **have been funded**. From here, we will further dive in and hopefully provide a more in-depth analysis.
-
-Referring to the data dictionary, the "Return Item" under the loan status column seems to be a good fit for our target variable as it indicates a missed payment due to insufficient funds. But we are also curious about other loan statuses like "External/Internal collection". Does it indicates timely repayment? Due to the absence of additional information, we've decided to stick with "Return Item" as our primary target variable for now. Further insights could be gained with more detailed data on these other categories.
-
 ## Data Understanding
 We received a zip file which contains 3 dataframes (loan, payment, clarity underwriting variables). Below is a summarization of these 3 data frame  
 - "loan.csv": Our key data frame   
 
 - "payment.csv": Consists payment info that comes after loan approval. Since our model's goal is to act as a secondary safety measure prior to loan approval, this dataset will be excluded to avoid information leakage. 
 
-- "clarity_underwriting_variables.csv": This dataset encompasses variables retrieved from clarity, aiding in the underwriting process of loans. In simpler terms, it involves assessing the risk associated with a loan by evaluating various factors (columns) to determine the probability of the borrower repaying the loan. Upon reviewing the dataset, it appears that the "clearFraudScore" serves as a summarizing score derived from all other columns in the dataset. We assume that all other columns are well represented by this particular column. Consequently, we may consider dropping all other columns to streamline our dataset and reduce dimensionality.  
+- "clarity_underwriting_variables.csv": This dataset encompasses variables retrieved from clarity, aiding in the underwriting process of loans. In simpler terms, it involves assessing the risk associated with a loan by evaluating various factors (columns) to determine the probability of the borrower repaying the loan. Upon reviewing the dataset, it appears that the "clearFraudScore" serves as a summarizing score derived from all other columns in the dataset. We assume that all other columns are well represented by this particular column. Consequently, we may consider dropping all other columns to streamline our dataset and reduce dimensionality. 
+
+## Important Preparation
+
+As per our objective, our model aims to serve as a complementary to the current screening system. We will narrow down our focus to loans that **have been funded**. From here, we will further dive in and hopefully provide a more in-depth analysis.
+
+Also, we decided on the "Return Item" under the loan status column as our target variable as it indicates a missed payment due to insufficient funds. Noted this is just an approximation as we are also curious about other loan statuses like "External/Internal collection". Does it indicates timely repayment? But due to the absence of additional information, we've decided to stick with "Return Item" as our primary target variable for now. Further insights could be gained with more detailed data on these other categories.
+
+ 
 
 ## EDA
 In this section, we will categorize the data into three types: Categorical, Datetime, and Numerical data. We will process each data type separately, create new features where applicable, and provide business insights to the company.

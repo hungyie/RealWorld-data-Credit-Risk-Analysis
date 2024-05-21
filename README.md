@@ -69,7 +69,7 @@ Please note that given the nature of this data science assessment, we aim to kee
 ![Feature_Importance](MoneyLion_Images/feature_importance.png)
 
 
-We have achieved an AUC score of approximately 85.67%, indicating that the model effectively discriminates between True Positives (instances correctly predicted as high risk and proven to default) and False Positives (instances incorrectly predicted as high risk but not proven to default). Also based on the diagram above we can observe that our new feature contributes much to the model!
+After running the model, we have achieved an AUC score of approximately 85.67%, indicating that the model effectively discriminates between True Positives (instances correctly predicted as high risk and proven to default) and False Positives (instances incorrectly predicted as high risk but not proven to default). Also based on the diagram above we can observe that our new feature serves as the main contributor to the model!
 
 
 ## Future Discussion

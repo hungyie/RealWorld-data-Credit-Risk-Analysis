@@ -19,7 +19,7 @@ We received a zip file which contains 3 dataframes (loan, payment, clarity under
 ## EDA
 In this section, we will categorize the data into three types: Categorical, Datetime, and Numerical data. We will process each data type separately, create new features where applicable, and provide business insights to the company.
 
-# We first start with categorical columns:  
+### We first start with categorical columns:  
 ![Categorical Feature](MoneyLion_Images/cat_payfreq_leadcost.png)  
 ![Categorical Feature](MoneyLion_Images/cat_npaidoff_state.png)  
 Finding: 
@@ -31,7 +31,7 @@ Finding:
 - Our dataset shows a significant class imbalance, which we will address in the modelling section.
 
 
-# Next, we will look at datetime columns:
+### Next, we will look at datetime columns:
 
 ![Application_Month](MoneyLion_Images/application_month.png)  
 

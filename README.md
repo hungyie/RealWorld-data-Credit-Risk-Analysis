@@ -10,15 +10,15 @@ Refering to the data dictionary, the "Return Item" under loanStatus column seems
 
 ## Data Understanding
 We received a zipfile which contains 3 dataframe (loan, payment, clarity underwriting variavles). Below is a summarization for these 3 dataframe  
-loan : Our key dataframe   
-payment : Consist payment info that comes after loan approval. Since our model's goal is to act as a secondary safety measure prior to loan approval, this dataset will be excluded to avoid information leakage.  
-clarity underwriting variavle : This dataset encompasses variables retrieved from clarity, aiding in the underwriting process of loans. In simpler terms, it involves assessing the risk associated with a loan by evaluating various factors (columns) to determine the probability of the borrower repaying the loan. Upon reviewing the dataset, it appears that the "clearFraudScore" serves as a summarizing score derived from all other columns in the dataset. We assume that all other columns are well represented by this particular column. Consequently, we may consider dropping all other columns to streamline our dataset and reduce dimensionality.  
+"loan.csv" : Our key dataframe   
+"payment.csv" : Consist payment info that comes after loan approval. Since our model's goal is to act as a secondary safety measure prior to loan approval, this dataset will be excluded to avoid information leakage.  
+"clarity_underwriting_variables.csv" : This dataset encompasses variables retrieved from clarity, aiding in the underwriting process of loans. In simpler terms, it involves assessing the risk associated with a loan by evaluating various factors (columns) to determine the probability of the borrower repaying the loan. Upon reviewing the dataset, it appears that the "clearFraudScore" serves as a summarizing score derived from all other columns in the dataset. We assume that all other columns are well represented by this particular column. Consequently, we may consider dropping all other columns to streamline our dataset and reduce dimensionality.  
 
 ## EDA
 In this section, we will categorize the dataset into three types: Categorical, Datetime, and Numerical data. We will process each data type separately, create new features where applicable, and provide business insights to the company.
 
-We frist start from categorical columns:
-![Categorical Feature](Money_Lion_Images/1.png)
+We frist start from categorical columns:  
+![Categorical Feature](Money_Lion_Images/1.png)  
 Finding: 
 
 - Semi-monthly and monthly repayment schedules have nearly twice the likelihood of loan default compared to biweekly and weekly repayments. This is likely because weekly payments involve smaller amounts each time. As a business strategy, the company should consider promoting more frequent repayment schedules to reduce the risk of loan defaults.

@@ -3,7 +3,8 @@
 This is a dataset for a take-home assessment of a finance company named Moneylion. The main goal of the notebook is to enhance the company's ability to identify loans at risk of default by creating a model that complements existing screening systems and reduces potential losses.
 
 ## Data Understanding
-We received a zip file which contains 3 dataframes (loan, payment, clarity underwriting variables). Below is a summarization of these 3 data frame  
+We received a zip file which contains 3 dataframes (loan, payment, clarity underwriting variables).   
+Below is a summarization of these 3 data frame  
 - "loan.csv": Our key data frame   
 
 - "payment.csv": Consists payment info that comes after loan approval. Since our model's goal is to act as a secondary safety measure prior to loan approval, this dataset will be excluded to avoid information leakage. 

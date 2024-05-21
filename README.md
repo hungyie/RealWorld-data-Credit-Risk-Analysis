@@ -4,22 +4,22 @@ This is a dataset for a take-home assessment of a finance company named Moneylio
 
 ## Important Preparation
 
-As per our objective, our model aim to serve as a complementary to the current screening system. We will narrow down our focus to loans that **have been funded**. From here, we will further dive in and hopefully to provide a more indepth analysis.
+As per our objective, our model aims to serve as a complementary to the current screening system. We will narrow down our focus to loans that **have been funded**. From here, we will further dive in and hopefully provide a more in-depth analysis.
 
-Refering to the data dictionary, the "Return Item" under loanStatus column seems to be a good fit for our target variable as it indicate a missed payment due to insufficient funds. But we are also curious with other loanStatus like "External/Internal collection". Does it really indicates timely repayment? Due to the absence of additional information, we've decided to stick with "Return Item" as our primary target variable for now. Further insights could be gained with more detailed data on these other categories.
+Referring to the data dictionary, the "Return Item" under the loan status column seems to be a good fit for our target variable as it indicates a missed payment due to insufficient funds. But we are also curious about other loan statuses like "External/Internal collection". Does it indicates timely repayment? Due to the absence of additional information, we've decided to stick with "Return Item" as our primary target variable for now. Further insights could be gained with more detailed data on these other categories.
 
 ## Data Understanding
-We received a zipfile which contains 3 dataframe (loan, payment, clarity underwriting variavles). Below is a summarization for these 3 dataframe  
-- "loan.csv" : Our key dataframe   
+We received a zip file which contains 3 dataframes (loan, payment, clarity underwriting variables). Below is a summarization of these 3 data frame  
+- "loan.csv": Our key data frame   
 
-- "payment.csv" : Consist payment info that comes after loan approval. Since our model's goal is to act as a secondary safety measure prior to loan approval, this dataset will be excluded to avoid information leakage. 
+- "payment.csv": Consists payment info that comes after loan approval. Since our model's goal is to act as a secondary safety measure prior to loan approval, this dataset will be excluded to avoid information leakage. 
 
-- "clarity_underwriting_variables.csv" : This dataset encompasses variables retrieved from clarity, aiding in the underwriting process of loans. In simpler terms, it involves assessing the risk associated with a loan by evaluating various factors (columns) to determine the probability of the borrower repaying the loan. Upon reviewing the dataset, it appears that the "clearFraudScore" serves as a summarizing score derived from all other columns in the dataset. We assume that all other columns are well represented by this particular column. Consequently, we may consider dropping all other columns to streamline our dataset and reduce dimensionality.  
+- "clarity_underwriting_variables.csv": This dataset encompasses variables retrieved from clarity, aiding in the underwriting process of loans. In simpler terms, it involves assessing the risk associated with a loan by evaluating various factors (columns) to determine the probability of the borrower repaying the loan. Upon reviewing the dataset, it appears that the "clearFraudScore" serves as a summarizing score derived from all other columns in the dataset. We assume that all other columns are well represented by this particular column. Consequently, we may consider dropping all other columns to streamline our dataset and reduce dimensionality.  
 
 ## EDA
-In this section, we will categorize the dataset into three types: Categorical, Datetime, and Numerical data. We will process each data type separately, create new features where applicable, and provide business insights to the company.
+In this section, we will categorize the data into three types: Categorical, Datetime, and Numerical data. We will process each data type separately, create new features where applicable, and provide business insights to the company.
 
-We frist start from categorical columns:  
+We first start with categorical columns:  
 ![Categorical Feature](MoneyLion_Images/cat_payfreq_leadcost.png)  
 ![Categorical Feature](MoneyLion_Images/cat_npaidoff_state.png)  
 Finding: 
@@ -28,21 +28,24 @@ Finding:
 - We observed that lead costs between 25 and 50 are associated with the highest default risk. Upon further investigation, we found that these leads are categorized as "lead" in the lead type column. MoneyLion is advised to reduce the approval rate for this category to mitigate risk.
 - The history of paid-off loans does not significantly impact the associated default risk.
 - Many states have a loan default rate of 10% or higher. It is recommended that the company reduce loan approvals in these states, with particular attention to Virginia (VA), which has a 20% default rate.
-- Our dataset shows a significant class imbalance, which we will address in the modeling section.
+- Our dataset shows a significant class imbalance, which we will address in the modelling section.
 
-Next we will look at datetime columns:
+
+Next, we will look at datetime columns:
+
 ![Application_Month](MoneyLion_Images/application_month.png)  
+
 - loanStatus 0 = no late repayment, loanStatus 1 = late repayment  
 
 Finding:
 - November to February : higher loan demand + higher incidence of late repayments
 - April to Octover : no instances of late repayment 
 
-Based on the finding above, we may infer that people tend to borrow a loan when it comees to holiday season(Christmas, Newyear) where they are more likely to make impulse purchases which they couldnt afford, thats why we see a late of repayment in the following few months. But those who ask for loan during the middle of the year exhibit a commendable record of timely repayment. **This may be a good business insights for the company as we can reduce loan during holiday season while incrasing loan during normal season to maximize profit while minizing risk of default loan.**
+Based on the finding above, we may infer that people tend to borrow a loan when it comes to the holiday season(Christmas, Newyear) where they are more likely to make impulse purchases which they couldnt afford, thats why we see a late of repayment in the following few months. But those who ask for loan during the middle of the year exhibit a commendable record of timely repayment. **This may be a good business insight for the company as we can reduce loans during the holiday season while increasing loans during the normal season to maximize profit while minimising the risk of default loans.**
 
 
 ![Time from submit application to origination](MoneyLion_Images/time_diff.png)  
-Originated: when the lender officially approves application and agrees to give the money  
+Originated: when the lender officially approves the application and agrees to give the money  
 
 Finding:
 - Most loan application is originated within 40 hours
@@ -55,11 +58,14 @@ In this section:
 - We address the issue of imbalanced datasets using the Upsampling method, specifically employing Random Sampling in this instance.
 - Subsequently, we utilize LGBM to compute the final AUC score.
 
-Please note that given the nature of this data science assessment, we aim to keep the modeling section as concise as possible. However, for further model enhancement, consider the following approaches:
+Please note that given the nature of this data science assessment, we aim to keep the modelling section as concise as possible. However, for further model enhancement, consider the following approaches:
 1. Experiment with different upsampling methods such as SMOTE or its extensions. If utilizing SMOTE, ensure to handle missing values accordingly.
 2. Conduct hyperparameter tuning using tools like HyperOpt or Optuna to fine-tune our model.
 3. Explore various types of K-fold validation techniques to validate the robustness of the final outcome.
+   
 ![Feature_Importance](MoneyLion_Images/feature_importance.png)
+
+
 We have achieved an AUC score of approximately 85.67%, indicating that the model effectively discriminates between True Positives (instances correctly predicted as high risk and proven to default) and False Positives (instances incorrectly predicted as high risk but not proven to default). Also based on the diagram above we can observe that our new feature contributes much to the model!
 
 

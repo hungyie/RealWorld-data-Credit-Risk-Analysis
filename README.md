@@ -20,7 +20,7 @@ We received a zipfile which contains 3 dataframe (loan, payment, clarity underwr
 In this section, we will categorize the dataset into three types: Categorical, Datetime, and Numerical data. We will process each data type separately, create new features where applicable, and provide business insights to the company.
 
 We frist start from categorical columns:  
-![Categorical Feature](MoneyLion Images/cat_payfreq_leadcost.png)  
+![Categorical Feature](MoneyLion_Images/cat_payfreq_leadcost.png)  
 Finding: 
 
 - Semi-monthly and monthly repayment schedules have nearly twice the likelihood of loan default compared to biweekly and weekly repayments. This is likely because weekly payments involve smaller amounts each time. As a business strategy, the company should consider promoting more frequent repayment schedules to reduce the risk of loan defaults.

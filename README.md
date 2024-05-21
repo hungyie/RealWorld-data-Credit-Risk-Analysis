@@ -42,7 +42,8 @@ Finding:
 - April to Octover : no instances of late repayment 
 
 Based on the finding above, we may infer that people tend to borrow a loan when it comes to the holiday season(Christmas, Newyear) where they are more likely to make impulse purchases which they couldnt afford, thats why we see a late of repayment in the following few months. But those who ask for loan during the middle of the year exhibit a commendable record of timely repayment. **This may be a good business insight for the company as we can reduce loans during the holiday season while increasing loans during the normal season to maximize profit while minimising the risk of default loans.**
-&nbsp;
+<br>
+
 ![Time from submit application to origination](MoneyLion_Images/time_diff.png)  
 Originated: when the lender officially approves the application and agrees to give the money  
 

@@ -15,7 +15,7 @@ Below is a summarization of these 3 data frame
 
 As per our objective, our model aims to serve as a complementary to the current screening system. We will narrow down our focus to loans that **have been funded**. From here, we will further dive in and hopefully provide a more in-depth analysis.
 
-Also, we decided on the "Return Item" under the loan status column as our target variable as it indicates a missed payment due to insufficient funds. Noted this is just an approximation as we are also curious about other loan statuses like "External/Internal collection". Does it indicates timely repayment? But due to the absence of additional information, we've decided to stick with "Return Item" as our primary target variable for now. Further insights could be gained with more detailed data on these other categories.
+Also, we decided on the "Return Item" under the loan status column as our target variable as it indicates a missed payment due to insufficient funds. Noted this is just an approximation as we are also curious about other loan statuses like "External/Internal collection". However due to the absence of additional information, we've decided to stick with "Return Item" as our primary target variable for now. Further insights could be gained with more detailed data on these other categories.
 
  
 
@@ -41,8 +41,8 @@ Finding:
 - loanStatus 0 = no late repayment, loanStatus 1 = late repayment  
 
 Finding:
-- November to February : higher loan demand + higher incidence of late repayments
-- April to Octover : no instances of late repayment 
+- November to February: higher loan demand + higher incidence of late repayments
+- April to October: no instances of late repayment 
 
 Based on the finding above, we may infer that people tend to borrow a loan when it comes to the holiday season(Christmas, Newyear) where they are more likely to make impulse purchases which they couldnt afford, thats why we see a late of repayment in the following few months. But those who ask for loan during the middle of the year exhibit a commendable record of timely repayment. **This may be a good business insight for the company as we can reduce loans during the holiday season while increasing loans during the normal season to maximize profit while minimising the risk of default loans.**
 <br>
